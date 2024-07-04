@@ -25,7 +25,8 @@ export const searchMovies = async page => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        id
+        title: store.state.searchText,
+        page
       })
     });
     const { Search, totalResults, Response, Error } = await res.json();
@@ -57,12 +58,6 @@ export const getMovieDetails = async id => {
         id
       })
     });
-    // const { Response, Error } = await res.json();
-    // if (Response === 'True') {
-    //   store.state.movie = await res.json();
-    // } else {
-    //   store.state.message = Error;
-    // }
     store.state.movie = await res.json();
   } catch(error) {
     console.error(error);

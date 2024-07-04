@@ -8,7 +8,7 @@ export default async function handler(request, response) {
     ? `http://omdbapi.com?apiKey=${APIKEY}&i=${id}&plot=full&`
     : `http://omdbapi.com?apiKey=${APIKEY}&title=${title}&page=${page}`;
   const res = await fetch(url);
-  const json = res.json();
+  const json = await res.json();
   response
     .status(200)
     .json(json);
